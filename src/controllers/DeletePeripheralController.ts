@@ -10,12 +10,12 @@ class DeletePeripheralController {
     try {
       await deletePeripheralService.delete(id).then(() => {
         response.render("message", {
-          message: "Usuário deletado com sucesso"
+          message: "Peripheral deleted with success"
         });
       });
     } catch (err) {
       response.render("message", {
-        message: `Erro ao deletar usuário: ${err.message}`
+        message: `Error deleting Peripheral: ${err.message}`
       });
     }
   }

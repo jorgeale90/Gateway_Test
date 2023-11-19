@@ -14,12 +14,12 @@ class CreateGatewayController {
         ip
       }).then(() => {
         response.render("message", {
-          message: "Usuário cadastrado com sucesso"
+          message: "Registered Gateway with success"
         });
       });
     } catch (err) {
       response.render("message", {
-        message: `Erro ao cadastrar usuário: ${err.message}`
+        message: `Error in Gateway registration: ${err.message}`
       });
     }
 

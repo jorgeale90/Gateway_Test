@@ -10,12 +10,12 @@ class UpdatePeripheralController {
     try {
       await updatePeripheralService.update({ id, uid, vendor, status }).then(() => {
         response.render("message", {
-          message: "Usuário atualizado com sucesso"
+          message: "Peripheral updated with success"
         });
       });
     } catch (err) {
       response.render("message", {
-        message: `Erro ao atualizar usuário: ${err.message}`
+        message: `Error updating Peripheral: ${err.message}`
       });
     }
 

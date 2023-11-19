@@ -51,9 +51,9 @@ While implementing your solution **please take care of the following requirement
 :scroll: **END**
 
 ## How to run:
-- Clone the repository.
+- Clone the repository: `https://github.com/jorgeale90/Gateway_Test.git`
 - Run `yarn` to download the dependecies.
 - Create the `database.sqlite` file inside the `src/database` folder.
 - Run `yarn typeorm migration:run` to run the migrations.
 - Run `yarn dev` to start the server.
-- The CRUD will be avaiable at `http://localhost:3000`.
+- The project will be avaiable at `http://localhost:3000`.

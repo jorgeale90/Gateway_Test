@@ -4,7 +4,7 @@ import { GatewayRepository } from "../repositories/GatewayRepository";
 class SearchGatewayService {
   async search(search: string) {
     if (!search) {
-      throw new Error("Por favor preencha o campo de busca");
+      throw new Error("Please pre-enter or search field");
     }
 
     const gatewayRepository = getCustomRepository(GatewayRepository);

@@ -10,12 +10,12 @@ class UpdateGatewayController {
     try {
       await updateGatewayService.update({ id, serial, name, ip }).then(() => {
         response.render("message", {
-          message: "Usuário atualizado com sucesso"
+          message: "Gateway updated with success"
         });
       });
     } catch (err) {
       response.render("message", {
-        message: `Erro ao atualizar usuário: ${err.message}`
+        message: `Error updating Gateway: ${err.message}`
       });
     }
 

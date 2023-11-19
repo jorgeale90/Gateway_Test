@@ -54,6 +54,7 @@
         <th scope="col">Uid</th>
         <th scope="col">Vendor</th>
         <th scope="col">Status</th>
+        <th scope="col">Gateway ID</th>
         <th scope="col">Created</th>
         <th scope="col">Update</th>
         <th scope="col">Action</th>
@@ -67,8 +68,18 @@
             <td>
               <%= peri.vendor %>
             </td>
-            <td>
+            <% if (peri.status === "Online") { %>
+            <td style="color: #6cc24a">
               <%= peri.status %>
+            </td>
+            <% } %>
+            <% if (peri.status === "Offline") { %>
+              <td style="color: #f72828">
+                <%= peri.status %>
+              </td>
+            <% } %>
+            <td>
+              <%= peri.gatewayId %>
             </td>
             <td>
               <%= peri.created_at.toLocaleDateString() %>

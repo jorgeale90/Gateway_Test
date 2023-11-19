@@ -16,7 +16,7 @@ class SearchGatewayController {
       });
     } catch (err) {
       response.render("message", {
-        message: `Erro ao buscar usuário: ${err.message}`
+        message: `Gateway search error: ${err.message}`
       });
     }
   }

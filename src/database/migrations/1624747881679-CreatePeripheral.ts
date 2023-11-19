@@ -26,6 +26,10 @@ export class CreatePeripheral1624747881679 implements MigrationInterface {
                         type: "varchar"
                     },
                     {
+                        name: "gatewayId",
+                        type: "integer"
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()"

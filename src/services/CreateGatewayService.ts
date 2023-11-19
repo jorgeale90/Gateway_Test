@@ -10,7 +10,7 @@ interface IGateway {
 class CreateGatewayService {
   async create({ serial, name, ip }: IGateway) {
     if (!serial || !name || !ip ) {
-      throw new Error("Por favor preencha todos os campos");
+      throw new Error("Please fill in all fields");
     }
 
     const gatewayRepository = getCustomRepository(GatewayRepository);
@@ -18,19 +18,19 @@ class CreateGatewayService {
     const gatewayserialAlreadyExists = await gatewayRepository.findOne({ serial });
 
     if (gatewayserialAlreadyExists) {
-      throw new Error("Username já está cadastrado");
+      throw new Error("The Serial is already registered");
     }
 
     const gatewaynameAlreadyExists = await gatewayRepository.findOne({ name });
 
     if (gatewaynameAlreadyExists) {
-      throw new Error("Email já está cadastrado");
+      throw new Error("The Name is already registered");
     }
 
     const gatewayipAlreadyExists = await gatewayRepository.findOne({ ip });
 
     if (gatewayipAlreadyExists) {
-      throw new Error("Email já está cadastrado");
+      throw new Error("The IP is already registered");
     }
 
     const gateway = gatewayRepository.create({ serial, name, ip });

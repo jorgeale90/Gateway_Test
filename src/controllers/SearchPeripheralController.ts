@@ -16,7 +16,7 @@ class SearchPeripheralController {
       });
     } catch (err) {
       response.render("message", {
-        message: `Erro ao buscar usuário: ${err.message}`
+        message: `Peripheral search error: ${err.message}`
       });
     }
   }

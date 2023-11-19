@@ -61,7 +61,17 @@
         </div>
         <div class="col-6">
           <label for="status" class="form-label">Status</label>
-          <input type="text" name="status" placeholder="Online" id="status" class="form-control">
+          <select name="status" id="status" class="form-select">
+            <option value="" selected disabled>Select an option</option>
+            <option value="Online">Online</option>
+            <option value="Offline">Offline</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label for="gatewayId" class="form-label">Gateway</label>
+          <input type="text" name="gatewayId" placeholder="Label" id="gatewayId" class="form-control">
         </div>
       </div>
       <br>

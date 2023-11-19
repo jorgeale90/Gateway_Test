@@ -1,10 +1,11 @@
-import {Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn} from "typeorm";
 import {
   Length,
   Min,
   Max,
 } from "class-validator";
 import { v4 as uuid } from "uuid";
+import {Peripheral} from "./Peripheral";
 
 @Entity("gateway")
 class Gateway {
@@ -23,6 +24,9 @@ class Gateway {
 
   @Column({unique: true})
   ip: string;
+
+  @OneToMany(() => Peripheral, peripheral => peripheral.gateway)
+  peripheral: Peripheral[];
 
   @CreateDateColumn()
   created_at: Date;

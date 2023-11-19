@@ -10,12 +10,12 @@ class DeleteGatewayController {
     try {
       await deleteGatewayService.delete(id).then(() => {
         response.render("message", {
-          message: "Usuário deletado com sucesso"
+          message: "Gateway deleted with success"
         });
       });
     } catch (err) {
       response.render("message", {
-        message: `Erro ao deletar usuário: ${err.message}`
+        message: `Error deleting Gateway: ${err.message}`
       });
     }
   }

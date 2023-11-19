@@ -14,12 +14,12 @@ class CreatePeripheralController {
         status
       }).then(() => {
         response.render("message", {
-          message: "Usuário cadastrado com sucesso"
+          message: "Registered Peripheral with success"
         });
       });
     } catch (err) {
       response.render("message", {
-        message: `Erro ao cadastrar usuário: ${err.message}`
+        message: `Error in Peripheral registration: ${err.message}`
       });
     }
 
