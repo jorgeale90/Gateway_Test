@@ -1,22 +1,21 @@
 import { getCustomRepository } from "typeorm";
+import { Messages } from "../enums";
 import { GatewayRepository } from "../repositories/GatewayRepository";
 
 class SearchGatewayService {
   async search(search: string) {
     if (!search) {
-      throw new Error("Please pre-enter or search field");
+      throw new Error(Messages.PRE_ENTER_SEARCH_FIELD);
     }
 
     const gatewayRepository = getCustomRepository(GatewayRepository);
 
-    const gateway = await gatewayRepository
+    return await gatewayRepository
         .createQueryBuilder()
         .where("serial like :search", { search: `%${search}%` })
         .orWhere("name like :search", { search: `%${search}%` })
         .orWhere("ip like :search", { search: `%${search}%` })
         .getMany();
-
-    return gateway;
 
   }
 }

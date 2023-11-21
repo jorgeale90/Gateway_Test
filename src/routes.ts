@@ -15,6 +15,7 @@ import { SearchPeripheralController } from "./controllers/SearchPeripheralContro
 import { UpdatePeripheralController } from "./controllers/UpdatePeripheralController";
 
 const router = Router();
+
 // Gateway
 const createGatewayController = new CreateGatewayController();
 const searchGatewayController = new SearchGatewayController();
@@ -22,6 +23,7 @@ const updateGatewayController = new UpdateGatewayController();
 const deleteGatewayController = new DeleteGatewayController();
 const listGatewayController = new ListGatewayController();
 const getGatewayDataController = new GetGatewayDataController();
+
 // Peripheral
 const createPeripheralController = new CreatePeripheralController();
 const searchPeripheralController = new SearchPeripheralController();
@@ -38,32 +40,21 @@ router.get("/gateway", listGatewayController.handle);
 router.get("/addGateway", (request, response) => {
   response.render("addGateway");
 });
-
 router.post("/addGateway", createGatewayController.handle);
-
 router.get("/searchGateway", searchGatewayController.handle);
-
 router.get("/editGateway", getGatewayDataController.handle);
-
 router.post("/edit-gateway", updateGatewayController.handle);
-
 router.post("/delete-gateway", deleteGatewayController.handle);
 
 // Peripheral
 router.get("/peripheral", listPeripheralController.handle);
-
 router.get("/addPeripheral", (request, response) => {
   response.render("addPeripheral");
 });
-
 router.post("/addPeripheral", createPeripheralController.handle);
-
 router.get("/searchPeripheral", searchPeripheralController.handle);
-
 router.get("/editPeripheral", getPeripheralDataController.handle);
-
 router.post("/edit-peripheral", updatePeripheralController.handle);
-
 router.post("/delete-peripheral", deletePeripheralController.handle);
 
 export { router };

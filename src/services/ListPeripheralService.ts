@@ -5,9 +5,7 @@ class ListPeripheralService {
   async list() {
     const peripheralRepository = getCustomRepository(PeripheralRepository);
 
-    const peripheral = await peripheralRepository.find();
-
-    return peripheral;
+    return await peripheralRepository.find();
   }
 }
 

@@ -3,12 +3,15 @@ import "express-async-errors";
 import express, { Request, Response, NextFunction } from "express";
 import path from "path";
 import { router } from "./routes";
+import { api } from "./routes/api";
 import "./database";
 
+const HTTP_PORT = 3000;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
+app.use(/^\/(api|rest)/, api);
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof Error) {
@@ -27,6 +30,6 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "..", "views"));
 
-app.listen(3000, () => {
-  console.log("Server is running at port 3000");
+app.listen(HTTP_PORT, () => {
+  console.log(`Server is running at port ${HTTP_PORT}`);
 });

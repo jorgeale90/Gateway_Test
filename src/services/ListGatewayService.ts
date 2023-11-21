@@ -5,9 +5,7 @@ class ListGatewayService {
   async list() {
     const gatewayRepository = getCustomRepository(GatewayRepository);
 
-    const gateway = await gatewayRepository.find();
-
-    return gateway;
+    return await gatewayRepository.find();
   }
 }
 

@@ -5,9 +5,7 @@ class GetGatewayDataService {
   async getData(id: string) {
     const gatewayRepository = getCustomRepository(GatewayRepository);
 
-    const gateway = await gatewayRepository.findOne(id);
-
-    return gateway;
+    return await gatewayRepository.findOne(id);
   }
 }
 

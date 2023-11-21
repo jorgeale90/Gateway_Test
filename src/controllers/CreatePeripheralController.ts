@@ -3,7 +3,7 @@ import { CreatePeripheralService } from "../services/CreatePeripheralService";
 
 class CreatePeripheralController {
   async handle(request: Request, response: Response) {
-    const { uid, vendor, status } = request.body;
+    const { uid, vendor, status, gateway } = request.body;
 
     const createPeripheralService = new CreatePeripheralService();
 
@@ -11,7 +11,8 @@ class CreatePeripheralController {
       await createPeripheralService.create({
         uid,
         vendor,
-        status
+        status,
+        gateway
       }).then(() => {
         response.render("message", {
           message: "Registered Peripheral with success"
