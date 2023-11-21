@@ -1,5 +1,5 @@
 export interface IGateway {
-    id?: string
+    id?: string;
     serial?: string;
     name?: string;
     ip?: string;

@@ -1,11 +1,7 @@
-import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, UpdateDateColumn} from "typeorm";
-import {
-    Length,
-    Min,
-    Max,
-} from "class-validator";
+import { Length, Max, Min } from "class-validator";
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
-import {Gateway} from "./Gateway";
+import { Gateway } from "./Gateway";
 
 @Entity("peripheral")
 class Peripheral {
@@ -13,7 +9,7 @@ class Peripheral {
     @PrimaryColumn()
     id: string;
 
-    @Column({unique: true})
+    @Column({ unique: true })
     @Min(3)
     @Max(10)
     uid: number;

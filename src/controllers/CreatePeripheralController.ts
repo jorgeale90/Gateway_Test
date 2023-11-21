@@ -1,26 +1,23 @@
 import { Request, Response } from "express";
+import { MessagesPeripheral } from "../enums";
 import { CreatePeripheralService } from "../services/CreatePeripheralService";
 
 class CreatePeripheralController {
   async handle(request: Request, response: Response) {
-    const { uid, vendor, status, gateway } = request.body;
-
+    const { uid, vendor, status, gatewayId } = request.body;
     const createPeripheralService = new CreatePeripheralService();
-
     try {
       await createPeripheralService.create({
         uid,
         vendor,
         status,
-        gateway
+        gatewayId,
       }).then(() => {
-        response.render("message", {
-          message: "Registered Peripheral with success"
-        });
+        response.render("message", { message: MessagesPeripheral.REGISTER });
       });
     } catch (err) {
       response.render("message", {
-        message: `Error in Peripheral registration: ${err.message}`
+        message: `${MessagesPeripheral.REGISTER_ERROR}: ${err.message}`,
       });
     }
 

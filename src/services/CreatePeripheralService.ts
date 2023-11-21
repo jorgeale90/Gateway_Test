@@ -1,5 +1,5 @@
 import { getCustomRepository } from "typeorm";
-import { Messages } from "../enums";
+import { Messages, MessagesPeripheral } from "../enums";
 import { IPeripheral } from "../interface";
 import { GatewayRepository } from "../repositories/GatewayRepository";
 import { PeripheralRepository } from "../repositories/PeripheralRepository";
@@ -19,7 +19,13 @@ class CreatePeripheralService {
     const peripheraluidAlreadyExists = await peripheralRepository.findOne({ uid });
 
     if (peripheraluidAlreadyExists) {
-      throw new Error(Messages.UID_ALREADY_REGISTERED);
+      throw new Error(MessagesPeripheral.UID_ALREADY_REGISTERED);
+    }
+
+    const peripheralCount = await peripheralRepository.count({ where: { gateway } });
+
+    if (peripheralCount >= 2) {
+      throw new Error(MessagesPeripheral.MAX_PERIPHERALS_REACHED);
     }
 
     const peripheral = peripheralRepository.create({ uid, vendor, status, gateway });
