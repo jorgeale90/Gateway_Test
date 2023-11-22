@@ -58,3 +58,5 @@ While implementing your solution **please take care of the following requirement
 
 ## Screenshot
 ![](https://github.com/jorgeale90/Gateway_Test/blob/main/public/screenshot/1.png)
+![](https://github.com/jorgeale90/Gateway_Test/blob/main/public/screenshot/2.png)
+![](https://github.com/jorgeale90/Gateway_Test/blob/main/public/screenshot/3.png)

@@ -1,5 +1,6 @@
 export const enum Messages {
     SUCCESS = 'success',
+    ERROR = 'error',
     SERVER_RUNNING = 'Server is running at port',
     SERVER_ERROR = 'Internal Server Error',
     FILL_ALL_FIELDS = 'Please fill in all fields',
@@ -17,6 +18,7 @@ export const enum MessagesGateway {
     UPDATE = 'Gateway updated with success',
     UPDATE_ERROR = 'Error deleting Gateway',
     SEARCH_ERROR = 'Gateway search error',
+    INVALID_IP = 'IP invalid',
 }
 
 export const enum MessagesPeripheral {

@@ -43,6 +43,26 @@ api.get("/gateway/:id", async function (req: Request, res: Response) {
     res.json({ "message": Messages.SUCCESS, data });
 });
 
+// GET BY SERIAL WHIT DEVICES
+api.get("/gateway/serial/:serial", async function (req: Request, res: Response) {
+    const { serial } = req.params;
+
+    const gatewayService = new GetGatewayDataService();
+    const peripheralService = new GetPeripheralDataService();
+
+    try {
+        const gatewayData = await gatewayService.getDataBySerial(serial);
+        const peripheralData = await peripheralService.getAllPeripheralsByGatewayId(gatewayData.id);
+        const data = {
+            gateway: gatewayData,
+            peripherals: peripheralData
+        };
+        res.json({ "message": Messages.SUCCESS, data });
+    } catch (error) {
+        res.status(500).json({ "message": Messages.ERROR, "error": error.message });
+    }
+});
+
 // CREATE
 api.post("/gateway", async function (req: Request, res: Response) {
     const params: IGateway = req.body;

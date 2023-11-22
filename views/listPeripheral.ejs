@@ -55,7 +55,6 @@
                     <th scope="col">Uid</th>
                     <th scope="col">Vendor</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Gateway ID</th>
                     <th scope="col">Created</th>
                     <th scope="col">Update</th>
                     <th scope="col">Action</th>
@@ -85,9 +84,6 @@
                                 <%= peri.status %>
                             </td>
                         <% } %>
-                        <td>
-                            <%= peri.gateway %><br>
-                        </td>
                         <td>
                             <%= peri.created_at.toLocaleDateString() %>
                             <%= peri.created_at.toLocaleTimeString() %>

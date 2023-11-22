@@ -7,6 +7,12 @@ class GetPeripheralDataService {
 
     return await peripheralRepository.findOne(id);
   }
+
+  async getAllPeripheralsByGatewayId(gateway: string) {
+    const peripheralRepository = getCustomRepository(PeripheralRepository);
+
+    return await peripheralRepository.find({ where: { gateway: gateway } });
+  }
 }
 
 export { GetPeripheralDataService };
