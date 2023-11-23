@@ -1,0 +1,27 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.routerPeripheral = void 0;
+const express_1 = require("express");
+const CreatePeripheralController_1 = require("../controllers/CreatePeripheralController");
+const DeletePeripheralController_1 = require("../controllers/DeletePeripheralController");
+const GetPeripheralDataController_1 = require("../controllers/GetPeripheralDataController");
+const ListPeripheralController_1 = require("../controllers/ListPeripheralController");
+const SearchPeripheralController_1 = require("../controllers/SearchPeripheralController");
+const UpdatePeripheralController_1 = require("../controllers/UpdatePeripheralController");
+const routerPeripheral = express_1.Router();
+exports.routerPeripheral = routerPeripheral;
+const createPeripheralController = new CreatePeripheralController_1.CreatePeripheralController();
+const searchPeripheralController = new SearchPeripheralController_1.SearchPeripheralController();
+const updatePeripheralController = new UpdatePeripheralController_1.UpdatePeripheralController();
+const deletePeripheralController = new DeletePeripheralController_1.DeletePeripheralController();
+const listPeripheralController = new ListPeripheralController_1.ListPeripheralController();
+const getPeripheralDataController = new GetPeripheralDataController_1.GetPeripheralDataController();
+routerPeripheral.get("/peripheral", listPeripheralController.handle);
+routerPeripheral.get("/addPeripheral", (request, response) => {
+    response.render("addPeripheral");
+});
+routerPeripheral.post("/addPeripheral", createPeripheralController.handle);
+routerPeripheral.get("/searchPeripheral", searchPeripheralController.handle);
+routerPeripheral.get("/editPeripheral", getPeripheralDataController.handle);
+routerPeripheral.post("/edit-peripheral", updatePeripheralController.handle);
+routerPeripheral.post("/delete-peripheral", deletePeripheralController.handle);

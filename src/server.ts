@@ -8,7 +8,7 @@ import { routerGateway, routerPeripheral } from "./routes";
 import { api } from "./routes/api";
 
 const HTTP_PORT = 3000;
-const app = express();
+export const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -28,4 +28,6 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "..", "views"));
 
-app.listen(HTTP_PORT, () => console.log(`${Messages.SERVER_RUNNING} ${HTTP_PORT}`));
+export const server=  app.listen(HTTP_PORT, () => console.log(`${Messages.SERVER_RUNNING} ${HTTP_PORT}`));
+
+server.on("error",console.error)
