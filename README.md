@@ -59,9 +59,19 @@ While implementing your solution **please take care of the following requirement
 - The project will be avaiable at `http://localhost:3000`.
 
 ## How to run test:
-- Run `yarn test` This runs all the test.
 - Run `jest gatewayRouter.spec.ts` This runs the Jest unit tests for Gateway.
 - Run `jest gatewayPeripheral.spec.ts` This runs the Jest unit tests for Peripheral.
+
+## How to run api Postman:
+> Gateway
+- Run GET `http://127.0.0.1:3000/api/gateway/` List all Gateway.
+- Run GET `http://127.0.0.1:3000/api/gateway/serial/:serial` Get by serial whit device.
+- Run POST `http://127.0.0.1:3000/api/gateway/` Created Gateway.
+- Run DELETE `http://127.0.0.1:3000/api/gateway/:id` Delete Gateway.
+> Peripheral
+- Run GET `http://127.0.0.1:3000/api/peripheral/` List all Peripheral.
+- Run POST `http://127.0.0.1:3000/api/peripheral/` Created Peripheral.
+- Run DELETE `http://127.0.0.1:3000/api/peripheral/:id` Delete Peripheral.
 
 ## Screenshot
 ![](https://github.com/jorgeale90/Gateway_Test/blob/main/public/screenshot/1.png)
