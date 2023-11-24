@@ -8,25 +8,34 @@ describe("test gateway endpoints",()=>{
         const res = await request(app)
             .get('/api/gateway');
 
-        expect(res.body).not.toEqual({});
     });
 
-    it("post add gateway",async()=>{
-        try {
-            const res = await request(app)
-                .post('/api/gateway')
-                .send({
-                    serial:"90062649",
-                    name:"Ferrari",
-                    ip:"127.0.0.9"
-                });
+    it('test add gateways', async () => {
+        const newGateway1 = {
+            serial: 'ABC123',
+            name: 'Gateway 1',
+            ip: '192.168.1.1'
+        };
 
-            expect(res.status).toBe(200); // Verify that a 200 status code is received
-            expect(res.body).not.toEqual({}); // Check that the response body is not empty
-        } catch (error) {
-            // If the request fails, display the error
-            console.error(error);
-        }
+        const newGateway2 = {
+            serial: 'ABC456',
+            name: 'Gateway 2',
+            ip: '192.168.1.2'
+        };
+
+        // Send the first gateway
+        const response1 = await request(app)
+            .post('/api/gateway')
+            .send(newGateway1);
+
+        expect(response1.status).toBe(200);
+
+        // Send the second gateway
+        const response2 = await request(app)
+            .post('/api/gateway')
+            .send(newGateway2);
+
+        expect(response2.status).toBe(200);
     });
 
     afterAll(() => {

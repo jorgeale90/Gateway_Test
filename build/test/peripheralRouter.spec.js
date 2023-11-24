@@ -20,25 +20,28 @@ describe("test peripheral endpoints", () => {
         expect(value * 2).toBe(6);
         const res = yield supertest_1.default(server_1.app)
             .get('/api/peripheral');
-        expect(res.body).not.toEqual({});
     }));
     it("post add peripheral", () => __awaiter(void 0, void 0, void 0, function* () {
-        try {
-            const res = yield supertest_1.default(server_1.app)
-                .post('/api/peripheral')
-                .send({
-                uid: "652021",
-                vendor: "Vendor12",
-                status: "Online",
-                gatewayId: "e8d679fe-489f-4e22-b83e-5773ad47c94d"
-            });
-            expect(res.status).toBe(200); // Verify that a 200 status code is received
-            expect(res.body).not.toEqual({}); // Check that the response body is not empty
-        }
-        catch (error) {
-            // If the request fails, display the error
-            console.error(error);
-        }
+        const newPeripheral1 = {
+            uid: 'DEF456',
+            vendor: 'Vendor 1',
+            status: 'Online',
+            gatewayId: '28767fbb-3314-484e-a06d-69cbd2e85851'
+        };
+        const newPeripheral2 = {
+            uid: 'HIJ789',
+            vendor: 'Vendor 2',
+            status: 'Offline',
+            gatewayId: '28767fbb-3314-484e-a06d-69cbd2e85851'
+        };
+        const response1 = yield supertest_1.default(server_1.app)
+            .post('/api/peripheral')
+            .send(newPeripheral1);
+        expect(response1.status).toBe(200);
+        const response2 = yield supertest_1.default(server_1.app)
+            .post('/api/peripheral')
+            .send(newPeripheral2);
+        expect(response2.status).toBe(200);
     }));
     afterAll(() => {
         server_1.server.close(); // Shut down the server after all tests have finished

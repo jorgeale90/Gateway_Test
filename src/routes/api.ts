@@ -20,14 +20,14 @@ const api = Router();
 
 //#region GATEWAYS
 // LIST
-api.get("/gateway", async function (req: Request, res: Response) {
+api.get("/api/gateway", async function (req: Request, res: Response) {
     const service = new ListGatewayService();
     const data = await service.list();
     res.json({ "message": Messages.SUCCESS, data });
 });
 
 // SEARCH
-api.get("/gateway/search", async function (req: Request, res: Response) {
+api.get("/api/gateway/search", async function (req: Request, res: Response) {
     const { ip, serial, name }: IGateway = req.query;
     const params = ip ?? serial ?? name;
     const service = new SearchGatewayService();
@@ -36,7 +36,7 @@ api.get("/gateway/search", async function (req: Request, res: Response) {
 });
 
 // GET BY ID
-api.get("/gateway/:id", async function (req: Request, res: Response) {
+api.get("/api/gateway/:id", async function (req: Request, res: Response) {
     const { id } = req.params;
     const service = new GetGatewayDataService();
     const data = await service.getData(id);
@@ -44,7 +44,7 @@ api.get("/gateway/:id", async function (req: Request, res: Response) {
 });
 
 // GET BY SERIAL WHIT DEVICES
-api.get("/gateway/serial/:serial", async function (req: Request, res: Response) {
+api.get("/api/gateway/serial/:serial", async function (req: Request, res: Response) {
     const { serial } = req.params;
 
     const gatewayService = new GetGatewayDataService();
@@ -64,7 +64,7 @@ api.get("/gateway/serial/:serial", async function (req: Request, res: Response) 
 });
 
 // CREATE
-api.post("/gateway", async function (req: Request, res: Response) {
+api.post("/api/gateway", async function (req: Request, res: Response) {
     const params: IGateway = req.body;
     const service = new CreateGatewayService();
     const data = await service.create(params);
@@ -72,7 +72,7 @@ api.post("/gateway", async function (req: Request, res: Response) {
 });
 
 // UPDATE
-api.put("/gateway/:id", async function (req: Request, res: Response) {
+api.put("/api/gateway/:id", async function (req: Request, res: Response) {
     const { serial, name, ip }: IGateway = req.body;
     const { id }: IGateway = req.params;
     const service = new UpdateGatewayService();
@@ -81,7 +81,7 @@ api.put("/gateway/:id", async function (req: Request, res: Response) {
 });
 
 // DELETE BY ID
-api.delete("/gateway/:id", async function (req: Request, res: Response) {
+api.delete("/api/gateway/:id", async function (req: Request, res: Response) {
     // here we will have logic to delete a user by a given user id
     const { id }: IGateway = req.params;
     const service = new DeleteGatewayService();
@@ -92,14 +92,14 @@ api.delete("/gateway/:id", async function (req: Request, res: Response) {
 
 //#region PERIPHERAL
 // LIST
-api.get("/peripheral", async function (req: Request, res: Response) {
+api.get("/api/peripheral", async function (req: Request, res: Response) {
     const service = new ListPeripheralService();
     const data = await service.list();
     res.json({ "message": Messages.SUCCESS, data });
 });
 
 // SEARCH
-api.get("/peripheral/search", async function (req: Request, res: Response) {
+api.get("/api/peripheral/search", async function (req: Request, res: Response) {
     const { uid, vendor, status }: IPeripheral = req.query;
     const params = `${uid}` ?? vendor ?? status;
     const service = new SearchPeripheralService();
@@ -108,7 +108,7 @@ api.get("/peripheral/search", async function (req: Request, res: Response) {
 });
 
 // GET BY ID
-api.get("/peripheral/:id", async function (req: Request, res: Response) {
+api.get("/api/peripheral/:id", async function (req: Request, res: Response) {
     const { id } = req.params;
     const service = new GetPeripheralDataService();
     const data = await service.getData(id);
@@ -116,7 +116,7 @@ api.get("/peripheral/:id", async function (req: Request, res: Response) {
 });
 
 // CREATE
-api.post("/peripheral", async function (req: Request, res: Response) {
+api.post("/api/peripheral", async function (req: Request, res: Response) {
     const params: IPeripheral = req.body;
     const service = new CreatePeripheralService();
     const data = !!params?.gatewayId ? await service.create(params) : await service.createWithGateway(params);
@@ -124,7 +124,7 @@ api.post("/peripheral", async function (req: Request, res: Response) {
 });
 
 // UPDATE
-api.put("/peripheral/:id", async function (req: Request, res: Response) {
+api.put("/api/peripheral/:id", async function (req: Request, res: Response) {
     const { uid, vendor, status, gateway, gatewayId }: IPeripheral = req.body;
     const { id }: IPeripheral = req.params;
     const service = new UpdatePeripheralService();
@@ -133,7 +133,7 @@ api.put("/peripheral/:id", async function (req: Request, res: Response) {
 });
 
 // DELETE BY ID
-api.delete("/peripheral/:id", async function (req: Request, res: Response) {
+api.delete("/api/peripheral/:id", async function (req: Request, res: Response) {
     const { id }: IPeripheral = req.params;
     const service = new DeletePeripheralService();
     const data = await service.delete(id);

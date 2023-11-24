@@ -15,9 +15,7 @@ const HTTP_PORT = 3000;
 exports.app = express_1.default();
 exports.app.use(express_1.default.json());
 exports.app.use(express_1.default.urlencoded({ extended: true }));
-exports.app.use(routes_1.routerGateway);
-exports.app.use(routes_1.routerPeripheral);
-exports.app.use(/^\/(api|rest)/, api_1.api);
+exports.app.use(api_1.api, routes_1.routerPeripheral, routes_1.routerGateway);
 exports.app.use((err, request, response, next) => {
     if (err instanceof Error) {
         return response.status(400).json({ error: err.message });

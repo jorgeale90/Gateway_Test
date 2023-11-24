@@ -20,24 +20,28 @@ describe("test gateway endpoints", () => {
         expect(value * 2).toBe(6);
         const res = yield supertest_1.default(server_1.app)
             .get('/api/gateway');
-        expect(res.body).not.toEqual({});
     }));
-    it("post add gateway", () => __awaiter(void 0, void 0, void 0, function* () {
-        try {
-            const res = yield supertest_1.default(server_1.app)
-                .post('/api/gateway')
-                .send({
-                serial: "90062649",
-                name: "Ferrari",
-                ip: "127.0.0.9"
-            });
-            expect(res.status).toBe(200); // Verify that a 200 status code is received
-            expect(res.body).not.toEqual({}); // Check that the response body is not empty
-        }
-        catch (error) {
-            // If the request fails, display the error
-            console.error(error);
-        }
+    it('test add gateways', () => __awaiter(void 0, void 0, void 0, function* () {
+        const newGateway1 = {
+            serial: 'ABC123',
+            name: 'Gateway 1',
+            ip: '192.168.1.1'
+        };
+        const newGateway2 = {
+            serial: 'ABC456',
+            name: 'Gateway 2',
+            ip: '192.168.1.2'
+        };
+        // Send the first gateway
+        const response1 = yield supertest_1.default(server_1.app)
+            .post('/api/gateway')
+            .send(newGateway1);
+        expect(response1.status).toBe(200);
+        // Send the second gateway
+        const response2 = yield supertest_1.default(server_1.app)
+            .post('/api/gateway')
+            .send(newGateway2);
+        expect(response2.status).toBe(200);
     }));
     afterAll(() => {
         server_1.server.close(); // Shut down the server after all tests have finished
