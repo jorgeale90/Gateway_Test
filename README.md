@@ -59,8 +59,7 @@ While implementing your solution **please take care of the following requirement
 - The project will be avaiable at `http://localhost:3000`.
 
 ## How to run test:
-- Run `jest gatewayRouter.spec.ts` This runs the Jest unit tests for Gateway.
-- Run `jest gatewayPeripheral.spec.ts` This runs the Jest unit tests for Peripheral.
+- Run `yarn run cypress open` Cypress is a next generation front end testing tool built for the modern web. We address the key pain points developers and QA engineers face when testing modern applications.
 
 ## How to run api Postman:
 > Gateway
@@ -77,3 +76,7 @@ While implementing your solution **please take care of the following requirement
 ![](https://github.com/jorgeale90/Gateway_Test/blob/main/public/screenshot/1.png)
 ![](https://github.com/jorgeale90/Gateway_Test/blob/main/public/screenshot/2.png)
 ![](https://github.com/jorgeale90/Gateway_Test/blob/main/public/screenshot/3.png)
+![](https://github.com/jorgeale90/Gateway_Test/blob/main/public/screenshot/4.png)
+![](https://github.com/jorgeale90/Gateway_Test/blob/main/public/screenshot/5.png)
+![](https://github.com/jorgeale90/Gateway_Test/blob/main/public/screenshot/6.png)
+![](https://github.com/jorgeale90/Gateway_Test/blob/main/public/screenshot/7.png)

@@ -24,7 +24,7 @@ class CreatePeripheralService {
 
     const peripheralCount = await peripheralRepository.count({ where: { gateway } });
 
-    if (peripheralCount >= 2) {
+    if (peripheralCount >= 10) {
       throw new Error(MessagesPeripheral.MAX_PERIPHERALS_REACHED);
     }
 

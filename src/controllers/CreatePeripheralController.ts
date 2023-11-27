@@ -20,7 +20,6 @@ class CreatePeripheralController {
         message: `${MessagesPeripheral.REGISTER_ERROR}: ${err.message}`,
       });
     }
-
   }
 }
 
